@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:news_app/API/News_API.dart';
 import 'package:news_app/Model/CategoriesModel.dart';
-import 'package:news_app/Model/NewsHeadLinesModel.dart';
 
 class Categoriesscreen extends StatefulWidget {
   const Categoriesscreen({super.key});
@@ -13,7 +12,8 @@ class Categoriesscreen extends StatefulWidget {
 }
 
 class _CategoriesscreenState extends State<Categoriesscreen> {
-  NewsApi _newsApi = NewsApi();
+  final NewsApi _newsApi = NewsApi();
+  // ignore: non_constant_identifier_names
   String CategoryName = 'general';
   List<String> btnCategory = [
     'General',
@@ -68,7 +68,7 @@ class _CategoriesscreenState extends State<Categoriesscreen> {
                 future: _newsApi.getNewsCategories(CategoryName),
                 builder: (context, AsyncSnapshot<CategoriesModel> snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(
+                    return const Center(
                       child: SpinKitCircle(
                         size: 50,
                         color: Colors.blueAccent,
@@ -92,15 +92,13 @@ class _CategoriesscreenState extends State<Categoriesscreen> {
                                   height: height * .18,
                                   width: width * .3,
                                   placeholder: (context, url) {
-                                    return Container(
-                                      child: SpinKitFadingCircle(
-                                        color: Colors.blueAccent,
-                                        size: 50,
-                                      ),
+                                    return const SpinKitFadingCircle(
+                                      color: Colors.blueAccent,
+                                      size: 50,
                                     );
                                   },
                                   errorWidget: (context, url, error) {
-                                    return Icon(
+                                    return const Icon(
                                       Icons.error_outline,
                                       color: Colors.blueAccent,
                                     );
@@ -110,16 +108,16 @@ class _CategoriesscreenState extends State<Categoriesscreen> {
                               Expanded(
                                   child: Container(
                                 height: height * .15,
-                                padding: EdgeInsets.only(left: 15),
+                                padding: const EdgeInsets.only(left: 15),
                                 child: Column(
                                   children: [
                                     Text(
                                       snapshot.data!.articles![index].title
                                           .toString(),
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontWeight: FontWeight.w500),
                                     ),
-                                    Spacer(),
+                                    const Spacer(),
                                     Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
@@ -128,7 +126,7 @@ class _CategoriesscreenState extends State<Categoriesscreen> {
                                           snapshot.data!.articles![index]
                                               .source!.name
                                               .toString(),
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               fontSize: 14,
                                               fontWeight: FontWeight.w500),
                                         ),
@@ -136,7 +134,7 @@ class _CategoriesscreenState extends State<Categoriesscreen> {
                                           snapshot.data!.articles![index]
                                               .publishedAt
                                               .toString(),
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               fontSize: 14,
                                               fontWeight: FontWeight.w500),
                                         ),

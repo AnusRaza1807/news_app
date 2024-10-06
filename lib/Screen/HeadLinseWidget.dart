@@ -25,7 +25,7 @@ class _HeadlinsewidgetState extends State<Headlinsewidget> {
         future: _newsApi.getNewHeadLines(),
         builder: (context, AsyncSnapshot<NewHeadLinesModel> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
+            return const Center(
               child: SpinKitCircle(
                 size: 50,
                 color: Colors.blueAccent,
@@ -53,14 +53,14 @@ class _HeadlinsewidgetState extends State<Headlinsewidget> {
                           fit: BoxFit.cover,
                           placeholder: (context, url) {
                             return Container(
-                              child: SpinKitFadingCircle(
+                              child: const SpinKitFadingCircle(
                                 color: Colors.blueAccent,
                                 size: 50,
                               ),
                             );
                           },
                           errorWidget: (context, url, error) {
-                            return Icon(
+                            return const Icon(
                               Icons.error_outline,
                               color: Colors.blueAccent,
                             );
@@ -78,13 +78,13 @@ class _HeadlinsewidgetState extends State<Headlinsewidget> {
                         ),
                         child: Container(
                           alignment: Alignment.bottomCenter,
-                          padding: EdgeInsets.all(15),
+                          padding: const EdgeInsets.all(15),
                           height: height * 0.22,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Container(
+                              SizedBox(
                                 width: width * .7,
                                 child: Text(
                                   snapshot.data!.articles![index].title
@@ -93,8 +93,8 @@ class _HeadlinsewidgetState extends State<Headlinsewidget> {
                                   overflow: TextOverflow.ellipsis,
                                 ),
                               ),
-                              Spacer(),
-                              Container(
+                              const Spacer(),
+                              SizedBox(
                                 width: width * .7,
                                 child: Row(
                                   mainAxisAlignment:

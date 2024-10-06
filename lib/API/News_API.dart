@@ -17,7 +17,7 @@ class NewsApi {
 
   Future<CategoriesModel> getNewsCategories(String category) async {
     var url = Uri.parse(
-        "https://newsapi.org/v2/everything?q=${category}&apiKey=db2907b4ab0549bc923d744fd2c46de6");
+        "https://newsapi.org/v2/everything?q=$category&apiKey=db2907b4ab0549bc923d744fd2c46de6");
     var response = await http.get(url);
 
     var responseBody = jsonDecode(response.body);
